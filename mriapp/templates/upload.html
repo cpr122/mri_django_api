@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Upload MRI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-3xl w-full bg-white rounded-xl shadow-lg p-8">
+      <h1 class="text-2xl font-semibold mb-4 text-gray-800">Subir imagen MRI</h1>
+      <p class="text-sm text-gray-500 mb-6">Compara la predicción entre AlexNet y un modelo local simulado.</p>
+      <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" class="space-y-4">
+        {% csrf_token %}
+        {{ form.image }}
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Analizar</button>
+      </form>
+      <p class="text-xs text-gray-400 mt-6">Si no tienes PyTorch instalado, se usará un modelo simulado.</p>
+    </div>
+  </body>
+</html>
